@@ -5,28 +5,19 @@ var pigLatinVowel = function(word) {
   return word + "way";
 };
 
-var multipleConsonants = function(word) {
+var pigLatinConsonant = function(word) {
   var consonants = [];
   var letters = word.split("");
-  var i = 0;
-  while(!(vowels.includes(letters[i]))) {
-    consonants.push(letters[i]);
+  while(!(vowels.includes(letters[0]))) {
+    consonants.push(letters[0]);
     letters.shift();
-    i++;
   };
-  return consonants;
-};
-
-var pigLatinConsonant = function(word) {
-  var characterArray = word.split("");
-  characterArray.push(characterArray[0]);
-  characterArray.shift();
-  var newWord = characterArray.join("");
-  return newWord + "ay";
+  var newWord = letters.join("")+consonants.join("")+"ay";
+  return newWord;
 };
 
 var pigLatin = function(word) {
-  if (word.charAt(0) === "a" || word.charAt(0) === "e" || word.charAt(0) === "i" || word.charAt(0) === "o" || word.charAt(0) === "u") {
+  if (vowels.includes(word.charAt(0))) {
     return pigLatinVowel(word);
   } else {
     return pigLatinConsonant(word);
